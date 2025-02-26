@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/GL",
+                "${workspaceFolder}/include/GLFW",
+                "C:/Users/msnbi/Documents/VSC_Cpp/nomosProject/include",
+                "C:/Users/msnbi/Documents/VSC_Cpp/nomosProject/include/GL",
+                "C:/Users/msnbi/Documents/VSC_Cpp/nomosProject/include/GLFW"
+            ],
+            "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "C:/mingw-w64/mingw64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
