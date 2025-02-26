@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sstream>  // For splitting tags
+#include <sstream>
 #include "../include/Person.h"
 #include "../include/FileManager.h"
 
@@ -7,36 +7,26 @@ const std::string DATA_FILE = "data/people.csv";
 
 int main() {
     // Load people from CSV
-    std::vector<Person> people = FileManager::loadFromFile(DATA_FILE);
-
-    // Display loaded people
-    std::cout << "Loaded People:\n";
-    for (const auto& person : people) {
-        person.display();
-    }
+    //std::vector<Person> people = FileManager::loadFromFile(DATA_FILE);
 
     std::vector<Person> runtimePeople;
 
-    // Add new people through console
     std::cout << "\nPlease add new people to the list: \n";
     bool exit = false;
     int i = 1;
 
-    while (!exit) {  // Corrected loop condition
+    while (!exit) { 
         std::string tempName;
         std::string tempTags;
-        char continueResponse;
+        std::string continueResponse;
 
-        // Get person name
         std::cout << "\nPerson " << i << ":\n";
         std::cout << "Name: ";
         std::getline(std::cin, tempName);
-
-        // Get tags as a comma-separated string
+     
         std::cout << "Tags (separated by commas, e.g., Scientist,Superhero): ";
         std::getline(std::cin, tempTags);
 
-        // Create new person with default rank 1
         Person newPerson(tempName, 1);
 
         // Split tempTags and add to the person
@@ -46,21 +36,19 @@ int main() {
             newPerson.addTag(tag);
         }
 
-        // Add to runtimePeople vector
         runtimePeople.push_back(newPerson);
-        i++;  // Increment count
+        i++;
 
-        // Ask if user wants to add more people
         std::cout << "Add more people? (y/n): ";
         bool exit1 = false;
 
-        while (!exit1) {  // Corrected loop condition
-            std::cin >> continueResponse;
+        while (!exit1) {
+            std::getline(std::cin, continueResponse);
 
-            if (continueResponse == 'n') {
+            if (continueResponse == "n") {
                 exit = true;
                 exit1 = true;
-            } else if (continueResponse == 'y') {
+            } else if (continueResponse == "y") {
                 exit = false;
                 exit1 = true;
             } else {
@@ -69,7 +57,6 @@ int main() {
         }
     }
 
-    // Save back to CSV
     FileManager::saveToFile(runtimePeople, DATA_FILE);
     std::cout << "Data saved to " << DATA_FILE << "\n";
 
